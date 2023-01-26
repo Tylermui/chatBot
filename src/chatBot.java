@@ -38,9 +38,44 @@ public class chatBot {
         }
 
         System.out.println(response);
+        System.out.println(reflect(input));
     }
 
     public static String reflect(String in) {
+        String temp = in;
+        if(in.contains(" are "))
+            temp = StringUtils.replaceEach(temp, new String[] { " are " }, new String[] { " am " });
+        if (in.contains(" am "))
+            temp = StringUtils.replaceEach(temp, new String[] { " am " }, new String[] { " are " });
         
+        if(in.contains(" were "))
+            temp = StringUtils.replaceEach(temp, new String[] { " were " }, new String[] { " was " });
+        if(in.contains(" you "))
+            temp = StringUtils.replaceEach(temp, new String[] { " you " }, new String[] { " I " });
+        else if(temp.contains(" you "))
+            temp = StringUtils.replaceEach(temp, new String[] { " you " }, new String[] { " me " });
+        if(in.contains(" you would "))
+            temp = StringUtils.replaceEach(temp, new String[] { " you would " }, new String[] { " I'd " });
+            
+        if(in.contains(" you have "))
+            temp = StringUtils.replaceEach(temp, new String[] { " you have " }, new String[] { " I've " });
+        if(in.contains(" you will "))
+            temp = StringUtils.replaceEach(temp, new String[] { " you will " }, new String[] { " I'll " });
+        if(in.contains(" your "))
+            temp = StringUtils.replaceEach(temp, new String[] { " your " }, new String[] { " my " });
+        if(in.contains(" I have "))
+            temp = StringUtils.replaceEach(temp, new String[] { " I have " }, new String[] { " you've " });
+
+        if(in.contains(" I will "))
+            temp = StringUtils.replaceEach(temp, new String[] { " I will " }, new String[] { " you'll " });
+        if(in.contains(" my "))
+            temp = StringUtils.replaceEach(temp, new String[] { " my " }, new String[] { " your " });
+        if(in.contains(" mine "))
+            temp = StringUtils.replaceEach(temp, new String[] { " mine " }, new String[] { " yours " });
+        if(in.contains(" me "))
+            temp = StringUtils.replaceEach(temp, new String[] { " me " }, new String[] { " you " });
+        
+
+        return temp;
     }
 }
