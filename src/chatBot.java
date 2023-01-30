@@ -7,14 +7,12 @@ public class chatBot {
     public static void main(String [] args) {
         Scanner scan = new Scanner(System.in);
         String input ="";
-
         System.out.println("What do you want");
 
         while(!input.equals("quit")) {
             String response = "";
             int random = new Random().nextInt(2 - 1 + 1) + 1;
             input = scan.nextLine();
-
             //breaks the loop if quit is said
             if(input.equals("quit"))
                 break;
@@ -138,57 +136,59 @@ public class chatBot {
             else { // Give default response if input matches no pattern 
                 response = "That's interesting. Tell me one of your favorite things.";
             }
-
             System.out.println(response);
         }
     }
     public static String reflect(String in) {
         String temp = " " + in + " ";
-        System.out.println(temp);
-        String output = in;
+        String output = " " + in + " ";
 
-        if(in.contains(" are "))
+        if(temp.contains(" are "))  {
             output = StringUtils.replaceEach(output, new String[] { " are " }, new String[] { " am " });
-        
-        //bug with you and I not reflecting at all, it has to do with the spacing
-        if(in.contains(" I "))
+        }
+        if(temp.contains(" I ")) {
             output = StringUtils.replaceEach(output, new String[] { " I " }, new String[] { " you " });
-        if(in.contains(" you "))
+        }
+        if(temp.contains(" you ")) {
             output = StringUtils.replaceEach(output, new String[] { " you " }, new String[] { " me " });
-        if(in.contains(" you "))
+        }
+        if(temp.contains(" you ")) {
             output = StringUtils.replaceEach(output, new String[] { " you " }, new String[] { " I " });
-        
-        if(in.contains(" am "))
+        }
+        if(temp.contains(" am ")) {
             output = StringUtils.replaceEach(output, new String[] { " am " }, new String[] { " are " });
-        if(in.contains(" were "))
+        }
+        if(temp.contains(" were ")) {
             output = StringUtils.replaceEach(output, new String[] { " were " }, new String[] { " was " });
-        if(in.contains(" you would "))
+        }
+        if(temp.contains(" you would ")) {
             output = StringUtils.replaceEach(output, new String[] { " you would " }, new String[] { " I'd " });
-        if(in.contains(" you have "))
+        }
+        if(temp.contains(" you have ")) {
             output = StringUtils.replaceEach(output, new String[] { " you have " }, new String[] { " I've " });
-        if(in.contains(" you will "))
+        }
+        if(in.contains(" you will ")) {
             output = StringUtils.replaceEach(output, new String[] { " you will " }, new String[] { " I'll " });
-        if(in.contains(" your "))
+        }
+        if(temp.contains(" your ")) {
             output = StringUtils.replaceEach(output, new String[] { " your " }, new String[] { " my " });
-        if(in.contains(" I have "))
+        }
+        if(temp.contains(" I have ")) {
             output = StringUtils.replaceEach(output, new String[] { " I have " }, new String[] { " you've " });
-        if(in.contains(" I will "))
+        }
+        if(temp.contains(" I will ")) {
             output = StringUtils.replaceEach(output, new String[] { " I will " }, new String[] { " you'll " });
-        if(in.contains(" my "))
+        }
+        if(temp.contains(" my ")) {
             output = StringUtils.replaceEach(output, new String[] { " my " }, new String[] { " your " });
-        if(in.contains(" mine "))
+        }
+        if(temp.contains(" mine ")) {
             output = StringUtils.replaceEach(output, new String[] { " mine " }, new String[] { " yours " });
-        if(in.contains(" me "))
+        }
+        if(temp.contains(" me ")) {
             output = StringUtils.replaceEach(output, new String[] { " me " }, new String[] { " you " });
-        return output;
+        }
+        
+        return output.substring(1, output.length()-1);
     }
 }
-
-
-
-// "I want to (.) because (.)" - "What specifically about " + reflect(m1.group(2)) + " makes you want to " + reflect(m1.group(1)) + "?"
-// "I'm (.) because (.)" - "How does " + reflect(m1.group(2)) + " make you feel " + reflect(m1.group(1)) + "?"
-// "I (.) (.)" - "Why do you " + reflect(m1.group(1)) + " " + reflect(m1.group(2)) + "?"
-// "I'm feeling (.) because (.)" - "How does " + reflect(m1.group(2)) + " make you feel " + reflect(m1.group(1)) + "?"
-// "I'm not sure (.*)" - "What specifically are you not sure about " + reflect(m1.group(1)) + "?"
-// "I (.) to (.)" - "What would be the reason for you " + reflect(m1.group(1)) + " " + reflect(m1.group(2)) + "?"
