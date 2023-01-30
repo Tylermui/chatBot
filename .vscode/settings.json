@@ -4,5 +4,6 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "/Users/tyler/School Work/commons-lang3-3.12.0.jar"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

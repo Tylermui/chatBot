@@ -1,7 +1,6 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.*;
-import java.lang.Object;
 import org.apache.commons.lang3.StringUtils;
 
 public class chatBot {
@@ -52,13 +51,13 @@ public class chatBot {
             Matcher m15 = p15.matcher(input);
             Pattern p16 = Pattern.compile("My (.*) is (.*)"); 
             Matcher m16 = p16.matcher(input);
-            Pattern p17 = Pattern.compile("What is your name"); 
+            Pattern p17 = Pattern.compile("What is your name\\?"); 
             Matcher m17 = p17.matcher(input);
             Pattern p18 = Pattern.compile("(.*) my favorite"); 
             Matcher m18 = p18.matcher(input);
-            Pattern p19 = Pattern.compile("I'm (.) because (.)"); 
+            Pattern p19 = Pattern.compile("I (.*) the feeling of (.*)"); 
             Matcher m19 = p19.matcher(input);
-            Pattern p20 = Pattern.compile(""); 
+            Pattern p20 = Pattern.compile("I'm not sure (.*)"); 
             Matcher m20 = p20.matcher(input);
             //producing the proper response
             if(m1.matches()) {
@@ -131,13 +130,11 @@ public class chatBot {
                 response = reflect(m18.group(1)) + " my favorite too!";
             }
             else if(m19.matches()) {
-                response =  "How does " + reflect(m1.group(2)) + " make you feel " + reflect(m1.group(1)) + "?";
+                response = "Why do you " + reflect(m19.group(1)) + " the feeling of " + reflect(m19.group(2)) + "?";
             }
-            // else if(m20.matches()) {
-            //     response = ;
-            // }
-
-
+            else if(m20.matches()) {
+                response = "What specifically are you not sure about " + reflect(m20.group(1)) + "?";
+            }
             else { // Give default response if input matches no pattern 
                 response = "That's interesting. Tell me one of your favorite things.";
             }
@@ -146,7 +143,7 @@ public class chatBot {
         }
     }
     public static String reflect(String in) {
-        String temp = " " + in;
+        String temp = " " + in + " ";
         System.out.println(temp);
         String output = in;
 
@@ -183,7 +180,6 @@ public class chatBot {
             output = StringUtils.replaceEach(output, new String[] { " mine " }, new String[] { " yours " });
         if(in.contains(" me "))
             output = StringUtils.replaceEach(output, new String[] { " me " }, new String[] { " you " });
-        
         return output;
     }
 }
