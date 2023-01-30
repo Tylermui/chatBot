@@ -46,17 +46,17 @@ public class chatBot {
             Matcher m12 = p12.matcher(input);
             Pattern p13 = Pattern.compile("I'm confused about (.*)"); 
             Matcher m13 = p13.matcher(input);
-            Pattern p14 = Pattern.compile(""); 
+            Pattern p14 = Pattern.compile("I (.*) you"); 
             Matcher m14 = p14.matcher(input);
-            Pattern p15 = Pattern.compile(""); 
+            Pattern p15 = Pattern.compile("Why are you (.*)"); 
             Matcher m15 = p15.matcher(input);
-            Pattern p16 = Pattern.compile(""); 
+            Pattern p16 = Pattern.compile("My (.*) is (.*)"); 
             Matcher m16 = p16.matcher(input);
-            Pattern p17 = Pattern.compile(""); 
+            Pattern p17 = Pattern.compile("What is your name"); 
             Matcher m17 = p17.matcher(input);
-            Pattern p18 = Pattern.compile(""); 
+            Pattern p18 = Pattern.compile("(.*) my favorite"); 
             Matcher m18 = p18.matcher(input);
-            Pattern p19 = Pattern.compile(""); 
+            Pattern p19 = Pattern.compile("I'm (.) because (.)"); 
             Matcher m19 = p19.matcher(input);
             Pattern p20 = Pattern.compile(""); 
             Matcher m20 = p20.matcher(input);
@@ -66,7 +66,6 @@ public class chatBot {
                     response = "What would getting " + reflect(m1.group(1)) + " mean to you?"; 
                 else if(random==2)
                     response = "What would " + reflect(m1.group(1)) + " accomplish for you?";
-
             }
             else if(m2.matches()) {
                 response = "Besides " + reflect(m2.group(2)) +
@@ -113,7 +112,30 @@ public class chatBot {
             else if(m13.matches()) {
                 response = "Can you explain what specifically you're confused about " + reflect(m13.group(1));
             }
-
+            else if(m14.matches()) {
+                response = "Why do you " + reflect(m14.group(1)) + " me?";
+            }
+            else if(m15.matches()) {
+                response = "I am not sure if I am capable of " + reflect(m15.group(1));
+            }
+            else if(m16.matches()) {
+                if(random==1)
+                    response = "I am sad to hear your " + reflect(m16.group(1)) + " is " + reflect(m16.group(2)); 
+                else if(random==2)
+                    response = "I am glad to hear your " + reflect(m16.group(1)) + " is " + reflect(m16.group(2));
+            }
+            else if(m17.matches()) {
+                response = "I am a chatbot, so I don't have a name. You can call me ChatBotFrank";
+            }
+            else if(m18.matches()) {
+                response = reflect(m18.group(1)) + " my favorite too!";
+            }
+            else if(m19.matches()) {
+                response =  "How does " + reflect(m1.group(2)) + " make you feel " + reflect(m1.group(1)) + "?";
+            }
+            // else if(m20.matches()) {
+            //     response = ;
+            // }
 
 
             else { // Give default response if input matches no pattern 
@@ -170,7 +192,6 @@ public class chatBot {
 
 // "I want to (.) because (.)" - "What specifically about " + reflect(m1.group(2)) + " makes you want to " + reflect(m1.group(1)) + "?"
 // "I'm (.) because (.)" - "How does " + reflect(m1.group(2)) + " make you feel " + reflect(m1.group(1)) + "?"
-// "I (.*) you" - "Why do you " + reflect(m1.group(1)) + " me?"
 // "I (.) (.)" - "Why do you " + reflect(m1.group(1)) + " " + reflect(m1.group(2)) + "?"
 // "I'm feeling (.) because (.)" - "How does " + reflect(m1.group(2)) + " make you feel " + reflect(m1.group(1)) + "?"
 // "I'm not sure (.*)" - "What specifically are you not sure about " + reflect(m1.group(1)) + "?"
