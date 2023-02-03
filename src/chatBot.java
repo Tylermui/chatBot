@@ -140,55 +140,59 @@ public class chatBot {
         }
     }
     public static String reflect(String in) {
-        String temp = " " + in + " ";
-        String output = " " + in + " ";
+        //first way of reflecting words
+        // String temp = " " + in + " ";
+        // String output = " " + in + " ";
+        // if(temp.contains(" are "))  {
+        //     output = StringUtils.replaceEach(output, new String[] { " are " }, new String[] { " am " });
+        // }
+        // if(temp.contains(" I ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " I " }, new String[] { " you " });
+        // }
+        // if(temp.contains(" you ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " you " }, new String[] { " me " });
+        // }
+        // if(temp.contains(" you ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " you " }, new String[] { " I " });
+        // }
+        // if(temp.contains(" am ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " am " }, new String[] { " are " });
+        // }
+        // if(temp.contains(" were ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " were " }, new String[] { " was " });
+        // }
+        // if(temp.contains(" you would ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " you would " }, new String[] { " I'd " });
+        // }
+        // if(temp.contains(" you have ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " you have " }, new String[] { " I've " });
+        // }
+        // if(in.contains(" you will ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " you will " }, new String[] { " I'll " });
+        // }
+        // if(temp.contains(" your ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " your " }, new String[] { " my " });
+        // }
+        // if(temp.contains(" I have ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " I have " }, new String[] { " you've " });
+        // }
+        // if(temp.contains(" I will ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " I will " }, new String[] { " you'll " });
+        // }
+        // if(temp.contains(" my ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " my " }, new String[] { " your " });
+        // }
+        // if(temp.contains(" mine ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " mine " }, new String[] { " yours " });
+        // }
+        // if(temp.contains(" me ")) {
+        //     output = StringUtils.replaceEach(output, new String[] { " me " }, new String[] { " you " });
+        // }
+        // return output.substring(1, output.length()-1);
 
-        if(temp.contains(" are "))  {
-            output = StringUtils.replaceEach(output, new String[] { " are " }, new String[] { " am " });
-        }
-        if(temp.contains(" I ")) {
-            output = StringUtils.replaceEach(output, new String[] { " I " }, new String[] { " you " });
-        }
-        if(temp.contains(" you ")) {
-            output = StringUtils.replaceEach(output, new String[] { " you " }, new String[] { " me " });
-        }
-        if(temp.contains(" you ")) {
-            output = StringUtils.replaceEach(output, new String[] { " you " }, new String[] { " I " });
-        }
-        if(temp.contains(" am ")) {
-            output = StringUtils.replaceEach(output, new String[] { " am " }, new String[] { " are " });
-        }
-        if(temp.contains(" were ")) {
-            output = StringUtils.replaceEach(output, new String[] { " were " }, new String[] { " was " });
-        }
-        if(temp.contains(" you would ")) {
-            output = StringUtils.replaceEach(output, new String[] { " you would " }, new String[] { " I'd " });
-        }
-        if(temp.contains(" you have ")) {
-            output = StringUtils.replaceEach(output, new String[] { " you have " }, new String[] { " I've " });
-        }
-        if(in.contains(" you will ")) {
-            output = StringUtils.replaceEach(output, new String[] { " you will " }, new String[] { " I'll " });
-        }
-        if(temp.contains(" your ")) {
-            output = StringUtils.replaceEach(output, new String[] { " your " }, new String[] { " my " });
-        }
-        if(temp.contains(" I have ")) {
-            output = StringUtils.replaceEach(output, new String[] { " I have " }, new String[] { " you've " });
-        }
-        if(temp.contains(" I will ")) {
-            output = StringUtils.replaceEach(output, new String[] { " I will " }, new String[] { " you'll " });
-        }
-        if(temp.contains(" my ")) {
-            output = StringUtils.replaceEach(output, new String[] { " my " }, new String[] { " your " });
-        }
-        if(temp.contains(" mine ")) {
-            output = StringUtils.replaceEach(output, new String[] { " mine " }, new String[] { " yours " });
-        }
-        if(temp.contains(" me ")) {
-            output = StringUtils.replaceEach(output, new String[] { " me " }, new String[] { " you " });
-        }
-        
-        return output.substring(1, output.length()-1);
+        //second way of reflecting words, simpler and easier to understand
+        String[] replaceList = {"am", "was", "were", "I", "I'd", "I've", "I'll", "my", "are", "you've", "you'll", "your", "yours", "you", "me"};
+        String[] replacingList = {"are", "were", "was", "you", "you would", "you have", "you will", "your", "am", "I have", "I will", "my", "mine", "I", "you"};
+        return StringUtils.replaceEach(in, replaceList, replacingList);
     }
 }
